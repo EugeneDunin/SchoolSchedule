@@ -55,6 +55,7 @@
     <Compile Include="Entities\Subject.cs" />
     <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Entities\TeacherWorkloadSchedule.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contexts\SchoolScheduleContext.cs" />
   </ItemGroup>

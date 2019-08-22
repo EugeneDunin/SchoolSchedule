@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EugeneDunin.DataModule.Entities
@@ -6,11 +7,11 @@ namespace EugeneDunin.DataModule.Entities
     public class Classroom
     {
         public long ClassroomId { get; set; }
-        [Index("INDEX_UNICLASSROOM", IsClustered = true, IsUnique = true)]
+        [Index("INDEX_UNICLASSROOM", Order = 1, IsUnique = true)]
         public int Number { get; set; }
-        [Index("INDEX_UNICLASSROOM", IsClustered = true, IsUnique = true)]
-        [Column("Label",TypeName = "CHAR")]
-        public char? Label { get; set; }
+        [Index("INDEX_UNICLASSROOM", Order = 2, IsUnique = true)]
+        [StringLength(1)]
+        public string Label { get; set; }
 
         public virtual ICollection<TeacherWorkloadSchedule> TeacherWorkloadSchedule { get; set; }
     }

@@ -5,14 +5,13 @@ namespace EugeneDunin.DataModule.Entities
 {
     public class Class
     {
-        public long ClassId { get; set; }
-        [Index("INDEX_UNICLASS", IsClustered = true, IsUnique = true)]
+        [Index("INDEX_UNICLASS", Order = 1, IsUnique = true)]
         public int Number { get; set; }
-        [Index("INDEX_UNICLASS", IsClustered = true, IsUnique = true)]
-        [Column("Label", TypeName = "CHAR")]
-        public char? Label { get; set; }
+        [Index("INDEX_UNICLASS", Order = 2, IsUnique = true)]
+        [StringLength(1)]
+        public string Label { get; set; }
 
-        [Required]
+        [Key]
         [ForeignKey("Teacher")]
         public virtual long ClassroomTeacherId { get; set; }
         public virtual Teacher Teacher { get; set; }

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EugeneDunin.DataModule", "EugeneDunin.DataModule\EugeneDunin.DataModule.csproj", "{C6183F6B-4F10-402B-B277-1EB17BA8CFBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{F73E1723-6B5B-4F14-95F6-010EBB4B324C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C6183F6B-4F10-402B-B277-1EB17BA8CFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6183F6B-4F10-402B-B277-1EB17BA8CFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6183F6B-4F10-402B-B277-1EB17BA8CFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F73E1723-6B5B-4F14-95F6-010EBB4B324C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F73E1723-6B5B-4F14-95F6-010EBB4B324C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F73E1723-6B5B-4F14-95F6-010EBB4B324C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F73E1723-6B5B-4F14-95F6-010EBB4B324C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

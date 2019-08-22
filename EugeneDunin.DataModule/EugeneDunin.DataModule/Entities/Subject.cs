@@ -7,6 +7,7 @@ namespace EugeneDunin.DataModule.Entities
     {
         public long SubjectId { get; set; }
         [Required]
+        [MaxLength(50)]
         public string SubjectName { get; set; }
 
         public virtual ICollection<Teacher> Teachers { get; set; }
