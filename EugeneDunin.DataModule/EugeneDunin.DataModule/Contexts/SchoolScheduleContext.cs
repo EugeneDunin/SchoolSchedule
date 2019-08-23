@@ -17,5 +17,12 @@ namespace EugeneDunin.DataModule.Contexts
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SchoolScheduleContext, Configuration>());
         }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TeacherWorkloadSchedule>()
+                .MapToStoredProcedures();
+        }
     }
 }
