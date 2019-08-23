@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EugeneDunin.DataModule.Entities
+namespace EugeneDunin.SchoolSchedule.DataModule.Entities
 {
     public class Teacher
     {

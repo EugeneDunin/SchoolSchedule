@@ -1,11 +1,9 @@
-namespace EugeneDunin.DataModule.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using System.Data.Entity.Migrations;
+using EugeneDunin.SchoolSchedule.DataModule.Contexts;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EugeneDunin.DataModule.Contexts.SchoolScheduleContext>
+namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<SchoolScheduleContext>
     {
         public Configuration()
         {
@@ -14,7 +12,7 @@ namespace EugeneDunin.DataModule.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(EugeneDunin.DataModule.Contexts.SchoolScheduleContext context)
+        protected override void Seed(SchoolScheduleContext context)
         {
             //  This method will be called after migrating to the latest version.
 

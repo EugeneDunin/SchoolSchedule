@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace EugeneDunin.DataModule.Entities
+namespace EugeneDunin.SchoolSchedule.DataModule.Entities
 {
     public class Subject
     {

@@ -1,8 +1,8 @@
-﻿using EugeneDunin.DataModule.Entities;
-using System.Data.Entity;
-using EugeneDunin.DataModule.Migrations;
+﻿using System.Data.Entity;
+using EugeneDunin.SchoolSchedule.DataModule.Entities;
+using EugeneDunin.SchoolSchedule.DataModule.Migrations;
 
-namespace EugeneDunin.DataModule.Contexts
+namespace EugeneDunin.SchoolSchedule.DataModule.Contexts
 {
     public class SchoolScheduleContext : DbContext
     {

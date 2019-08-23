@@ -7,8 +7,8 @@
     <ProjectGuid>{C6183F6B-4F10-402B-B277-1EB17BA8CFBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EugeneDunin.DataModule</RootNamespace>
-    <AssemblyName>EugeneDunin.DataModule</AssemblyName>
+    <RootNamespace>EugeneDunin.SchoolSchedule.DataModule</RootNamespace>
+    <AssemblyName>EugeneDunin.SchoolSchedule.DataModule</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -63,5 +63,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
