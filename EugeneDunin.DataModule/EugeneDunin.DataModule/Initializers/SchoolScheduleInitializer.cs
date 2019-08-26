@@ -1,33 +1,22 @@
+Ôªøusing System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using EugeneDunin.SchoolSchedule.DataModule.Contexts;
 using EugeneDunin.SchoolSchedule.DataModule.Entities;
 
-namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
+namespace EugeneDunin.SchoolSchedule.DataModule.Initializers
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<EugeneDunin.SchoolSchedule.DataModule.Contexts.SchoolScheduleContext>
+    public class SchoolScheduleInitializer : DropCreateDatabaseAlways<SchoolScheduleContext>
     {
-        public Configuration()
+        protected override void Seed(SchoolScheduleContext context)
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "EugeneDunin.SchoolSchedule.DataModule.Contexts.SchoolScheduleContext";
-            AutomaticMigrationDataLossAllowed = true;
-        }
-
-        protected override void Seed(EugeneDunin.SchoolSchedule.DataModule.Contexts.SchoolScheduleContext context)
-        {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
-
             var teacher = new Teacher()
             {
-                Name = "»‚‡Ì",
-                Surname = "»‚‡ÌÓ‚",
-                Patronymic = "»‚‡ÌÓ‚Ë˜",
+                Name = "–ò–≤–∞–Ω",
+                Surname = "–ò–≤–∞–Ω–æ–≤",
+                Patronymic = "–ò–≤–∞–Ω–æ–≤–∏—á",
                 StudyLoad = 50
             };
 
@@ -39,8 +28,8 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
 
             ICollection<Subject> subjects = new List<Subject>()
             {
-                new Subject() {SubjectName = "¿Î„Â·‡"},
-                new Subject() {SubjectName = "√ÂÓÏÂÚËˇ"}
+                new Subject() {SubjectName = "–ê–ª–≥–µ–±—Ä–∞"},
+                new Subject() {SubjectName = "–ì–µ–æ–º–µ—Ç—Ä–∏—è"}
             };
 
             var classroom = new Classroom()
@@ -66,13 +55,13 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
             };
 
             context.Classrooms
-                .AddOrUpdate(classroomEntity => new {classroomEntity.Number, classroomEntity.Label}, classroom);
+                .AddOrUpdate(classroomEntity => new { classroomEntity.Number, classroomEntity.Label }, classroom);
 
             context.Classes.AddOrUpdate(@class);
 
             context.Teachers
                 .AddOrUpdate(
-                    teacherEntity => new {teacherEntity.Name, teacherEntity.Surname, teacherEntity.Patronymic},
+                    teacherEntity => new { teacherEntity.Name, teacherEntity.Surname, teacherEntity.Patronymic },
                     teacher);
 
             context.Subjects.AddOrUpdate(subject => subject.SubjectName, subjects.ToArray());
@@ -80,6 +69,8 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
             context.TeacherWorkloadSchedules.AddOrUpdate(teacherWorkLoad);
 
             context.SaveChanges();
+
+            base.Seed(context);
         }
     }
 }

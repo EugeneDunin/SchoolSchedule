@@ -51,10 +51,10 @@
     <Compile Include="Entities\Class.cs" />
     <Compile Include="Entities\Classroom.cs" />
     <Compile Include="Entities\Configurations\TeacherEntityConfiguration.cs" />
-    <Compile Include="Entities\Configurations\TeacherWorkloadScheduleEntityConfiguration.cs" />
     <Compile Include="Entities\Subject.cs" />
     <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Entities\TeacherWorkloadSchedule.cs" />
+    <Compile Include="Initializers\SchoolScheduleInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contexts\SchoolScheduleContext.cs" />
@@ -63,6 +63,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

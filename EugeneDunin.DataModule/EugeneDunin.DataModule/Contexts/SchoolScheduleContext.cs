@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using EugeneDunin.SchoolSchedule.DataModule.Entities;
+using EugeneDunin.SchoolSchedule.DataModule.Entities.Configurations;
 using EugeneDunin.SchoolSchedule.DataModule.Migrations;
 
 namespace EugeneDunin.SchoolSchedule.DataModule.Contexts
@@ -16,6 +17,14 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Contexts
         public SchoolScheduleContext() : base("SchoolScheduleDB")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SchoolScheduleContext, Configuration>());
+            //Database.SetInitializer(new SchoolScheduleInitializer());
+        }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Moved all Student related configuration to StudentEntityConfiguration class
+            modelBuilder.Configurations.Add(new TeacherEntityConfiguration());
         }
     }
 }

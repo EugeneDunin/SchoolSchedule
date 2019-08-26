@@ -1,13 +1,13 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using EugeneDunin.SchoolSchedule.DataModule.Entities;
 
-namespace EugeneDunin.DataModule.Entities.Configurations
+namespace EugeneDunin.SchoolSchedule.DataModule.Entities.Configurations
 {
-    class TeacherEntityConfiguration: EntityTypeConfiguration<Teacher>
+    public class TeacherEntityConfiguration: EntityTypeConfiguration<Teacher>
     {
         public TeacherEntityConfiguration()
         {
-
+            this.HasIndex(teacher => new { teacher.Name, teacher.Surname, teacher.Patronymic})
+                .IsUnique(true);
         }
     }
 }
