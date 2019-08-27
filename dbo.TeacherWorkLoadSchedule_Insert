@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[TeacherWorkLoad_Insert]
+﻿CREATE PROCEDURE [dbo].[TeacherWorkLoadSchedule_Insert]
     @StudyLoad [int],
 	@DayOfWeek [int],
 	@LessonNumber [int],
@@ -25,6 +25,6 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		RAISERROR (1, -1, -1, 'FromDate should be earlier the ToDate.') 
+		RAISERROR ('FromDate should be earlier the ToDate.', 1, 1, '') 
 	END
 END

@@ -20,5 +20,7 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Entities
         public virtual Class Class { get; set; }
 
         public virtual ICollection<Subject> Subjects { get; set; }
+
+        public virtual ICollection<TeacherWorkloadSchedule> TeacherWorkloadSchedules { get; set; }
     }
 }

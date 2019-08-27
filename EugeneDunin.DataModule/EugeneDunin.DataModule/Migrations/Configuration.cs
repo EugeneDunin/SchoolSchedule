@@ -23,24 +23,39 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            var teacher = new Teacher()
+            var teachers = new List<Teacher>()
             {
-                Name = "Иван",
-                Surname = "Иванов",
-                Patronymic = "Иванович",
-                StudyLoad = 50
+                new Teacher()
+                {
+                    Name = "Иван",
+                    Surname = "Иванов",
+                    Patronymic = "Иванович",
+                    StudyLoad = 50
+                },
+                new Teacher()
+                {
+                    Name = "Пётр",
+                    Surname = "Петров",
+                    Patronymic = "Петрович",
+                    StudyLoad = 50
+                }
             };
 
-            var @class = new Class()
+            var classes = new List<Class>()
             {
-                Number = 10,
-                Label = "A"
+                new Class() {Number = 10, Label = "A"},
+                new Class() {Number = 11, Label = "A"},
             };
 
-            ICollection<Subject> subjects = new List<Subject>()
+            var firstSubjectsSet = new List<Subject>()
             {
                 new Subject() {SubjectName = "Алгебра"},
                 new Subject() {SubjectName = "Геометрия"}
+            };
+
+            var secondSubjectsSet = new List<Subject>()
+            {
+                new Subject() {SubjectName = "Биология"},
             };
 
             var classroom = new Classroom()
@@ -49,14 +64,17 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
                 Label = "a"
             };
 
-            teacher.Subjects = subjects;
-            @class.Teacher = teacher;
+            teachers[0].Subjects = firstSubjectsSet;
+            classes[0].Teacher = teachers[0];
+
+            teachers[1].Subjects = secondSubjectsSet;
+            classes[1].Teacher = teachers[1];
 
             var teacherWorkLoad = new TeacherWorkloadSchedule()
             {
 
-                Teacher = teacher,
-                Class = @class,
+                Teacher = teachers[0],
+                Class = classes[0],
                 Classroom = classroom,
                 FromDate = new DateTime(2019, 1, 1),
                 ToDate = new DateTime(2020, 1, 1),
@@ -68,16 +86,23 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
             context.Classrooms
                 .AddOrUpdate(classroomEntity => new {classroomEntity.Number, classroomEntity.Label}, classroom);
 
-            context.Classes.AddOrUpdate(@class);
+            context.Classes.AddOrUpdate(classEntity => new { classEntity.Number, classEntity.Label }, classes.ToArray());
 
             context.Teachers
                 .AddOrUpdate(
                     teacherEntity => new {teacherEntity.Name, teacherEntity.Surname, teacherEntity.Patronymic},
-                    teacher);
+                    teachers.ToArray());
 
-            context.Subjects.AddOrUpdate(subject => subject.SubjectName, subjects.ToArray());
+            context.Subjects.AddOrUpdate(subject => subject.SubjectName, firstSubjectsSet.Union(secondSubjectsSet).ToArray());
 
-            context.TeacherWorkloadSchedules.AddOrUpdate(teacherWorkLoad);
+           /* context.TeacherWorkloadSchedules
+                .AddOrUpdate(teacherWorkLoadEntity => 
+                    new
+                    {
+                        teacherWorkLoadEntity.LessonNumber, teacherWorkLoadEntity.DayOfWeek,
+                        teacherWorkLoadEntity.FkTeacherId, teacherWorkLoadEntity.FkClassId
+                    },
+                    teacherWorkLoad);*/
 
             context.SaveChanges();
         }

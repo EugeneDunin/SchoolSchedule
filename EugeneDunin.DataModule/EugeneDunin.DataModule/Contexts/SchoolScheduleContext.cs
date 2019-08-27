@@ -25,6 +25,19 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Contexts
         {
             // Moved all Student related configuration to StudentEntityConfiguration class
             modelBuilder.Configurations.Add(new TeacherEntityConfiguration());
+
+            modelBuilder.Entity<TeacherWorkloadSchedule>()
+                .MapToStoredProcedures(
+                    p => p.Insert(sp => sp.HasName("TeacherWorkloadSchedule_Insert")
+                        .Parameter(workloadSchedule => workloadSchedule.StudyLoad, "StudyLoad")
+                        .Parameter(workloadSchedule => workloadSchedule.DayOfWeek, "DayOfWeek")
+                        .Parameter(workloadSchedule => workloadSchedule.LessonNumber, "LessonNumber")
+                        .Parameter(workloadSchedule => workloadSchedule.FromDate, "FromDate")
+                        .Parameter(workloadSchedule => workloadSchedule.ToDate, "ToDate")
+                        .Parameter(workloadSchedule => workloadSchedule.FkTeacherId, "FkTeacherId")
+                        .Parameter(workloadSchedule => workloadSchedule.FkClassId, "FkClassId")
+                        .Parameter(workloadSchedule => workloadSchedule.FkClassroomId, "FkClassroomId")
+                    ));
         }
     }
 }
