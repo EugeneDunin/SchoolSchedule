@@ -1,8 +1,9 @@
-﻿using EugeneDunin.DataModule.Entities;
-using System.Data.Entity;
-using EugeneDunin.DataModule.Migrations;
+﻿using System.Data.Entity;
+using EugeneDunin.SchoolSchedule.DataModule.Entities;
+using EugeneDunin.SchoolSchedule.DataModule.Entities.Configurations;
+using EugeneDunin.SchoolSchedule.DataModule.Migrations;
 
-namespace EugeneDunin.DataModule.Contexts
+namespace EugeneDunin.SchoolSchedule.DataModule.Contexts
 {
     public class SchoolScheduleContext : DbContext
     {
@@ -16,6 +17,27 @@ namespace EugeneDunin.DataModule.Contexts
         public SchoolScheduleContext() : base("SchoolScheduleDB")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SchoolScheduleContext, Configuration>());
+            //Database.SetInitializer(new SchoolScheduleInitializer());
+        }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Moved all Student related configuration to StudentEntityConfiguration class
+            modelBuilder.Configurations.Add(new TeacherEntityConfiguration());
+
+            modelBuilder.Entity<TeacherWorkloadSchedule>()
+                .MapToStoredProcedures(
+                    p => p.Insert(sp => sp.HasName("TeacherWorkloadSchedule_Insert")
+                        .Parameter(workloadSchedule => workloadSchedule.StudyLoad, "StudyLoad")
+                        .Parameter(workloadSchedule => workloadSchedule.DayOfWeek, "DayOfWeek")
+                        .Parameter(workloadSchedule => workloadSchedule.LessonNumber, "LessonNumber")
+                        .Parameter(workloadSchedule => workloadSchedule.FromDate, "FromDate")
+                        .Parameter(workloadSchedule => workloadSchedule.ToDate, "ToDate")
+                        .Parameter(workloadSchedule => workloadSchedule.FkTeacherId, "FkTeacherId")
+                        .Parameter(workloadSchedule => workloadSchedule.FkClassId, "FkClassId")
+                        .Parameter(workloadSchedule => workloadSchedule.FkClassroomId, "FkClassroomId")
+                    ));
         }
 
 

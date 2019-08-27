@@ -7,8 +7,8 @@
     <ProjectGuid>{C6183F6B-4F10-402B-B277-1EB17BA8CFBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EugeneDunin.DataModule</RootNamespace>
-    <AssemblyName>EugeneDunin.DataModule</AssemblyName>
+    <RootNamespace>EugeneDunin.SchoolSchedule.DataModule</RootNamespace>
+    <AssemblyName>EugeneDunin.SchoolSchedule.DataModule</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,10 +51,10 @@
     <Compile Include="Entities\Class.cs" />
     <Compile Include="Entities\Classroom.cs" />
     <Compile Include="Entities\Configurations\TeacherEntityConfiguration.cs" />
-    <Compile Include="Entities\Configurations\TeacherWorkloadScheduleEntityConfiguration.cs" />
     <Compile Include="Entities\Subject.cs" />
     <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Entities\TeacherWorkloadSchedule.cs" />
+    <Compile Include="Initializers\SchoolScheduleInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contexts\SchoolScheduleContext.cs" />

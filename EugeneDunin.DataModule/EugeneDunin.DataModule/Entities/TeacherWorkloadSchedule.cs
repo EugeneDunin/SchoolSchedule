@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EugeneDunin.DataModule.Entities
+namespace EugeneDunin.SchoolSchedule.DataModule.Entities
 {
     public class TeacherWorkloadSchedule
     {
@@ -12,6 +12,12 @@ namespace EugeneDunin.DataModule.Entities
         public DayOfWeek DayOfWeek { get; set; }
         [Index("INDEX_LESSON_TIME_CONFLICT", Order = 2, IsUnique = true)]
         public int LessonNumber { get; set; }
+        [Required]
+        [Column(TypeName = "date")]
+        public DateTime FromDate { get; set; }
+        [Required]
+        [Column(TypeName = "date")]
+        public DateTime ToDate { get; set; }
 
         [Required]
         [ForeignKey("Teacher")]

@@ -1,0 +1,30 @@
+﻿CREATE PROCEDURE [dbo].[TeacherWorkLoadSchedule_Insert]
+    @StudyLoad [int],
+	@DayOfWeek [int],
+	@LessonNumber [int],
+	@FromDate [DATE],
+	@ToDate [DATE],
+	@FkTeacherId [bigint],
+    @FkClassId [bigint],
+    @FkClassroomId [bigint] 
+AS
+BEGIN
+	IF 	@FromDate < @ToDate
+	BEGIN
+		INSERT [dbo].[TeacherWorkloadSchedules]
+		([StudyLoad],[DayOfWeek],[LessonNumber], [FromDate],
+		[ToDate], [FkTeacherId], [FkClassId], [FkClassroomId])
+    VALUES (@StudyLoad ,
+			@DayOfWeek ,
+			@LessonNumber ,
+			@FromDate ,
+			@ToDate ,
+			@FkTeacherId ,
+			@FkClassId ,
+			@FkClassroomId )
+	END
+	ELSE
+	BEGIN
+		RAISERROR ('FromDate should be earlier the ToDate.', 1, 1, '') 
+	END
+END

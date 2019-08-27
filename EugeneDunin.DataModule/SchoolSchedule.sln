@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EugeneDunin.DataModule", "EugeneDunin.DataModule\EugeneDunin.DataModule.csproj", "{C6183F6B-4F10-402B-B277-1EB17BA8CFBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EugeneDunin.SchoolSchedule.DataModule", "EugeneDunin.DataModule\EugeneDunin.SchoolSchedule.DataModule.csproj", "{C6183F6B-4F10-402B-B277-1EB17BA8CFBC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{F73E1723-6B5B-4F14-95F6-010EBB4B324C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EugeneDunin.SchoolSchedule.Foundation", "EugeneDunin.SchoolSchedule.Foundation\EugeneDunin.SchoolSchedule.Foundation.csproj", "{FED98E45-450A-49D1-8B1E-CDC4196524C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F73E1723-6B5B-4F14-95F6-010EBB4B324C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F73E1723-6B5B-4F14-95F6-010EBB4B324C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F73E1723-6B5B-4F14-95F6-010EBB4B324C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED98E45-450A-49D1-8B1E-CDC4196524C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED98E45-450A-49D1-8B1E-CDC4196524C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED98E45-450A-49D1-8B1E-CDC4196524C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED98E45-450A-49D1-8B1E-CDC4196524C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
