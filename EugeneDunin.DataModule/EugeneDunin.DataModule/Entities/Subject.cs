@@ -12,6 +12,7 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Entities
         [Index("INDEX_UNICSUBJECTNAME",IsUnique = true)]
         public string SubjectName { get; set; }
 
-        public virtual ICollection<Teacher> Teachers { get; set; }
+
+        public virtual ICollection<TeacherSubject> TeacherSubjects { get; set; }
     }
 }

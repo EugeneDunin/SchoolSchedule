@@ -19,21 +19,10 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Entities
         [Column(TypeName = "date")]
         public DateTime ToDate { get; set; }
 
+
         [Required]
         [ForeignKey("Teacher")]
-        [Index("INDEX_SCHEDULE", Order = 1, IsUnique = true)]
-        public virtual long FkTeacherId { get; set; }
-        public virtual Teacher Teacher { get; set; }
-
-        [Required]
-        [ForeignKey("Class")]
-        [Index("INDEX_SCHEDULE", Order = 2, IsUnique = true)]
-        public virtual long FkClassId { get; set; }
-        public virtual Class Class { get; set; }
-
-        [Required]
-        [ForeignKey("Classroom")]
-        public virtual long FkClassroomId { get; set; }
-        public virtual Classroom Classroom { get; set; }
+        public virtual long FkTeacherSubjectId { get; set; }
+        public virtual TeacherSubject TeacherSubject { get; set; }
     }
 }

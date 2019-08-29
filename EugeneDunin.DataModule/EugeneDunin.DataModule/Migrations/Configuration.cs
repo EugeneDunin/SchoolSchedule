@@ -80,7 +80,7 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
                 ToDate = new DateTime(2020, 1, 1),
                 LessonNumber = 1,
                 DayOfWeek = DayOfWeek.Monday,
-                StudyLoad = 5
+                StudyLoad = 5,
             };
 
             context.Classrooms
