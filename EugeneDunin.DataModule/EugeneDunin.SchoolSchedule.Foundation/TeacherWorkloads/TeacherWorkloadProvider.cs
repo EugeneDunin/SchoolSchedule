@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EugeneDunin.SchoolSchedule.DataModule.Contexts;
+using EugeneDunin.SchoolSchedule.DataModule.Entities;
 using EugeneDunin.SchoolSchedule.Foundation.Interfaces;
 
 namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
@@ -19,23 +20,42 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
         }
 
 
-        public ICollection<ITeacherWorkload> GetTecherWorkLoad(long teacherId, DateTime start, DateTime end)
+        public ICollection<ITeacherWorkload> GetTecherWorkLoad(long teacherId, DateTime fromDate, DateTime toDate)
         {
             var teacherWorkloadSchedules = _ctx.TeacherWorkloadSchedules.Where(teacherWorkload =>
-                teacherWorkload.FkTeacherId == teacherId);
-            var teacherWorkloads = new List<ITeacherWorkload>();
-            foreach (var teacherWorkloadSchedule in teacherWorkloadSchedules)
-            {
-                teacherWorkloads.Add(_teacherWorkloadFactory.CreateTeacherWorkload(teacherWorkloadSchedule));
-            }
+                teacherWorkload.FkTeacherId == teacherId 
+                && teacherWorkload.FromDate >= fromDate
+                && teacherWorkload.ToDate <= toDate)
+                .ToList();
 
-            return teacherWorkloads;
+            return CreateTeacherWorkloads(teacherWorkloadSchedules);
+        }
+
+        public IDictionary<long, ICollection<ITeacherWorkload>> GetTechersWorkLoad(DateTime fromDate, DateTime toDate)
+        {
+            var teacherWorkloadSchedules = _ctx.TeacherWorkloadSchedules
+                .Where(teacherWorkload => teacherWorkload.FromDate >= fromDate && teacherWorkload.ToDate <= toDate)
+                .GroupBy(teacherWorkload => teacherWorkload.TeacherWorkloadScheduleId)
+                .ToList();
+
+            IDictionary<long, ICollection<ITeacherWorkload>> result = new Dictionary<long, ICollection<ITeacherWorkload>>();
+            teacherWorkloadSchedules.ForEach(teacherWorkLoadGroup =>
+                result.Add(teacherWorkLoadGroup.Key, CreateTeacherWorkloads(teacherWorkLoadGroup.AsEnumerable()))
+                );
+
+            return result;
         }
 
 
-        public ICollection<ITeacherWorkload> GetTechersWorkLoad(DateTime start, DateTime end)
+        private ICollection<ITeacherWorkload> CreateTeacherWorkloads(IEnumerable<TeacherWorkloadSchedule> teacherWorkloads)
         {
-            throw new NotImplementedException();
+            var converted = new List<ITeacherWorkload>();
+            foreach (var teacherWorkload in teacherWorkloads)
+            {
+                converted.Add(_teacherWorkloadFactory.CreateTeacherWorkload(teacherWorkload));
+            }
+
+            return converted;
         }
     }
 }

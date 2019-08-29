@@ -1,7 +1,7 @@
 ﻿namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
 {
-    public interface ITeacherWorkloadFactory
+    public interface ITeacherWorkloadFactory<TInit>
     {
-        ITeacherWorkload CreateTeacherWorkload<TInit>(TInit initializer) where  TInit : class;
+        ITeacherWorkload CreateTeacherWorkload(TInit initializer);
     }
 }
