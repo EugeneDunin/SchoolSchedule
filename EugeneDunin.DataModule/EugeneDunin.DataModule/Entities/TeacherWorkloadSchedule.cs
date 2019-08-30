@@ -21,6 +21,16 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Entities
 
 
         [Required]
+        [ForeignKey("Classroom")]
+        public virtual long FkClassroomId { get; set; }
+        public virtual Classroom Classroom { get; set; }
+
+        [Required]
+        [ForeignKey("Class")]
+        public virtual long FkClassId { get; set; }
+        public virtual Class Class { get; set; }
+
+        [Required]
         [ForeignKey("Teacher")]
         public virtual long FkTeacherSubjectId { get; set; }
         public virtual TeacherSubject TeacherSubject { get; set; }
