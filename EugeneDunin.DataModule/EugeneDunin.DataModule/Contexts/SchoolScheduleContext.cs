@@ -39,6 +39,8 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Contexts
                         .Parameter(workloadSchedule => workloadSchedule.FkTeacherSubjectId, "FkClassId")
                         .Parameter(workloadSchedule => workloadSchedule.FkClassroomId, "FkClassroomId")
                     ));
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

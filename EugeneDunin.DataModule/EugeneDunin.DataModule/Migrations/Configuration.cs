@@ -7,7 +7,7 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EugeneDunin.SchoolSchedule.DataModule.Contexts.SchoolScheduleContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Contexts.SchoolScheduleContext>
     {
         public Configuration()
         {
@@ -48,8 +48,8 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
                 new Class() {Number = 11, Label = "A"},
             };
 
-            teachers[0].Class = classes[0];
-            teachers[1].Class = classes[1];
+            classes[0].Teacher = teachers[0];
+            classes[1].Teacher = teachers[1];
 
             var subjects = new List<Subject>()
             {
@@ -92,18 +92,9 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
                     teacherEntity => new {teacherEntity.Name, teacherEntity.Surname, teacherEntity.Patronymic},
                     teachers.ToArray());
 
-            context.Subjects.AddOrUpdate(subject => subject.SubjectName, subjects.ToArray());
+            context.Subjects.AddOrUpdate(subject => new { subject.SubjectName }, subjects.ToArray());
 
             context.TeacherSubjects.AddOrUpdate(teacherSubjects.ToArray());
-
-            /* context.TeacherWorkloadSchedules
-                 .AddOrUpdate(teacherWorkLoadEntity => 
-                     new
-                     {
-                         teacherWorkLoadEntity.LessonNumber, teacherWorkLoadEntity.DayOfWeek,
-                         teacherWorkLoadEntity.FkTeacherId, teacherWorkLoadEntity.FkClassId
-                     },
-                     teacherWorkLoad);*/
 
             context.SaveChanges();
         }
