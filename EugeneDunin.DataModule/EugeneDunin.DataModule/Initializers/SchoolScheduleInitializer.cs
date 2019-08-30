@@ -12,7 +12,7 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Initializers
     {
         protected override void Seed(SchoolScheduleContext context)
         {
-            var teacher = new Teacher()
+            /*var teacher = new Teacher()
             {
                 Name = "Иван",
                 Surname = "Иванов",
@@ -70,7 +70,7 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Initializers
 
             context.SaveChanges();
 
-            base.Seed(context);
+            base.Seed(context);*/
         }
     }
 }

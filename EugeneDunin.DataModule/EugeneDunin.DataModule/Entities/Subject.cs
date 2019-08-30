@@ -8,10 +8,11 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Entities
     {
         public long SubjectId { get; set; }
         [Required]
-        [MaxLength(50)]
-        [Index("INDEX_UNICSUBJECTNAME",IsUnique = true)]
+        [StringLength(50)]
+        [Index("INDEX_UNICSUBJECTNAME", 1, IsUnique = true)]
         public string SubjectName { get; set; }
 
-        public virtual ICollection<Teacher> Teachers { get; set; }
+
+        public virtual ICollection<TeacherSubject> TeacherSubjects { get; set; }
     }
 }

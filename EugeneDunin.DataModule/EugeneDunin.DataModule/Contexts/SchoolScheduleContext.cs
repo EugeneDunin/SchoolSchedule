@@ -10,6 +10,7 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Contexts
         public DbSet<Class> Classes { get; set; }
         public DbSet<Classroom> Classrooms { get; set; }
         public DbSet<Subject> Subjects { get; set; }
+        public DbSet<TeacherSubject> TeacherSubjects { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherWorkloadSchedule> TeacherWorkloadSchedules { get; set; }
 
@@ -34,10 +35,12 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Contexts
                         .Parameter(workloadSchedule => workloadSchedule.LessonNumber, "LessonNumber")
                         .Parameter(workloadSchedule => workloadSchedule.FromDate, "FromDate")
                         .Parameter(workloadSchedule => workloadSchedule.ToDate, "ToDate")
-                        .Parameter(workloadSchedule => workloadSchedule.FkTeacherId, "FkTeacherId")
-                        .Parameter(workloadSchedule => workloadSchedule.FkClassId, "FkClassId")
+                        .Parameter(workloadSchedule => workloadSchedule.FkTeacherSubjectId, "FkTeacherSubjectId")
+                        .Parameter(workloadSchedule => workloadSchedule.FkTeacherSubjectId, "FkClassId")
                         .Parameter(workloadSchedule => workloadSchedule.FkClassroomId, "FkClassroomId")
                     ));
+
+            base.OnModelCreating(modelBuilder);
         }
 
 

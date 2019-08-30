@@ -53,6 +53,7 @@
     <Compile Include="Entities\Configurations\TeacherEntityConfiguration.cs" />
     <Compile Include="Entities\Subject.cs" />
     <Compile Include="Entities\Teacher.cs" />
+    <Compile Include="Entities\TeacherSubject.cs" />
     <Compile Include="Entities\TeacherWorkloadSchedule.cs" />
     <Compile Include="Initializers\SchoolScheduleInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />

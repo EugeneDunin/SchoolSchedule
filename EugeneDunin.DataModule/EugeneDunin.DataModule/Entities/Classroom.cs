@@ -13,6 +13,7 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Entities
         [StringLength(1)]
         public string Label { get; set; }
 
-        public virtual ICollection<TeacherWorkloadSchedule> TeacherWorkloadSchedule { get; set; }
+
+        public virtual ICollection<TeacherWorkloadSchedule> TeacherWorkloadSchedules { get; set; }
     }
 }
