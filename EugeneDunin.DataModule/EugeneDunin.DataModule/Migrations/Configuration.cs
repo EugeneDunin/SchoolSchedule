@@ -48,6 +48,9 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Migrations
                 new Class() {Number = 11, Label = "A"},
             };
 
+            teachers[0].Class = classes[0];
+            teachers[1].Class = classes[1];
+
             var subjects = new List<Subject>()
             {
                 new Subject() {SubjectName = "Алгебра"},
