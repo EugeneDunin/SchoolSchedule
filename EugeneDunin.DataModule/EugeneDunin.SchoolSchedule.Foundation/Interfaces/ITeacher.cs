@@ -2,12 +2,12 @@
 
 namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
 {
-    public interface ITeacher
+    public interface ITeacher: IEntity
     {
         string Name { get; }
         string Surname { get; }
         string Patronymic { get; }
-        int StudyLoad { get; }
-        HashSet<string> Subjects { get; }
+        int StudyLoad { get; set; }
+        string SubjectName { get; }
     }
 }

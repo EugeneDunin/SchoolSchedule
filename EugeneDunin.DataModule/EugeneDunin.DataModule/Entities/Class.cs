@@ -8,7 +8,7 @@ namespace EugeneDunin.SchoolSchedule.DataModule.Entities
     {
         [Key]
         [ForeignKey("Teacher")]
-        public long ClassrId { get; set; }
+        public long ClassId { get; set; }
         [Index("INDEX_UNICLASS", Order = 1, IsUnique = true)]
         public int Number { get; set; }
         [Index("INDEX_UNICLASS", Order = 2, IsUnique = true)]

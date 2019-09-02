@@ -1,8 +1,8 @@
 ﻿namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
 {
-    public interface IClass
+    public interface IClass: IEntity
     {
-        int Number { get; set; }
-        string Label { get; set; }
+        int Number { get; }
+        string Label { get; }
     }
 }

@@ -1,10 +1,13 @@
-﻿namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
+﻿using System.Collections.Generic;
+
+namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
 {
-    public interface ITeacherWorkload
+    public interface ITeacherWorkload: IEntity
     {
-        string TeacherFullName { get; set; }
-        string SubjectName { get; set; }
-        int StudyLoadToClass { get; set; }
-        IClass Class { get; set; }
+        string Name { get; }
+        string Surname { get; }
+        string Patronymic { get; }
+        string SubjectName { get; }
+        ICollection<IClassLoad> ClassLoads { get; }
     }
 }

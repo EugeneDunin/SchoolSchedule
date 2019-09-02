@@ -1,8 +1,8 @@
 ﻿namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
 {
-    public interface ILesson: IEntity
+    public interface IClassLoad: IEntity
     {
+        int StudyLoadToClass { get; set; }
         IClass Class { get; set; }
-        int LessonNumber { get; set; }
     }
 }

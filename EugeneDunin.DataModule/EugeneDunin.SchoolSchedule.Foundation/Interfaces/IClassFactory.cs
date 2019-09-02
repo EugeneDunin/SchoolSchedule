@@ -1,7 +1,9 @@
-﻿namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
+﻿using EugeneDunin.SchoolSchedule.DataModule.Contexts;
+
+namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
 {
-    public interface IClassFactory<TInit>
+    public interface IClassFactory<in TInit>
     {
-        IClass CreateClass(TInit initializer);
+        IClass CreateClass(SchoolScheduleContext ctx, TInit initializer);
     }
 }
