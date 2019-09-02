@@ -1,6 +1,6 @@
 ﻿using EugeneDunin.SchoolSchedule.DataModule.Contexts;
 
-namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
+namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces.Factories
 {
     public interface IClassFactory<in TInit>
     {
