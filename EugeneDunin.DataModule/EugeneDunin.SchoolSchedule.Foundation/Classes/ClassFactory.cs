@@ -1,5 +1,6 @@
 ﻿using EugeneDunin.SchoolSchedule.DataModule.Contexts;
 using EugeneDunin.SchoolSchedule.Foundation.Interfaces;
+using EugeneDunin.SchoolSchedule.Foundation.Interfaces.Factories;
 
 namespace EugeneDunin.SchoolSchedule.Foundation.Classes
 {
