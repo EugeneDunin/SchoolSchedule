@@ -7,7 +7,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
         string Name { get; }
         string Surname { get; }
         string Patronymic { get; }
-        int StudyLoad { get; set; }
+        int StudyLoad { get; }
         string SubjectName { get; }
     }
 }

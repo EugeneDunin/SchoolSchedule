@@ -7,7 +7,7 @@ using EugeneDunin.SchoolSchedule.Foundation.Abstractions;
 
 namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
 {
-    public sealed class TeacherWorkload : LogicEntityBase, ITeacherWorkloadInternal
+    public sealed class TeacherWorkload : ContextInitBase, ITeacherWorkloadInternal
     {
         public long Id { get; }
         public string Name { get; set; }

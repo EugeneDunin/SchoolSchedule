@@ -2,12 +2,12 @@
 
 namespace EugeneDunin.SchoolSchedule.Foundation.Abstractions
 {
-    public abstract class LogicEntityBase
+    public abstract class ContextInitBase
     {
         protected readonly SchoolScheduleContext Ctx;
 
 
-        protected LogicEntityBase(SchoolScheduleContext ctx)
+        protected ContextInitBase(SchoolScheduleContext ctx)
         {
             Ctx = ctx;
         }

@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\LogicEntityBase.cs" />
+    <Compile Include="Abstractions\ContextInitBase.cs" />
     <Compile Include="Classes\Class.cs" />
     <Compile Include="Classes\ClassFactory.cs" />
     <Compile Include="ClassLoads\ClassLoad.cs" />
@@ -56,19 +56,21 @@
     <Compile Include="Interfaces\IClassFactory.cs" />
     <Compile Include="Interfaces\IClassLoad.cs" />
     <Compile Include="Interfaces\IClassLoadFactory.cs" />
-    <Compile Include="Interfaces\IClassWithLed.cs" />
     <Compile Include="Interfaces\IClassroom.cs" />
     <Compile Include="Interfaces\ILesson.cs" />
     <Compile Include="Interfaces\IId.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\Internals\IClassInternal.cs" />
+    <Compile Include="Interfaces\Internals\IClassLoadInternal.cs" />
     <Compile Include="Interfaces\Internals\ITeacherInternal.cs" />
     <Compile Include="Interfaces\Internals\ITeacherWorkloadInternal.cs" />
     <Compile Include="Interfaces\ITeacher.cs" />
     <Compile Include="Interfaces\ITeacherSchedule.cs" />
+    <Compile Include="Interfaces\ITeacherScheduleProvider.cs" />
     <Compile Include="Interfaces\ITeacherWorkload.cs" />
     <Compile Include="Interfaces\ITeacherWorkloadProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeacherSchedules\TeacherScheduleProvider.cs" />
     <Compile Include="TeacherWorkloads\TeacherWorkLoad.cs" />
     <Compile Include="TeacherWorkloads\TeacherWorkloadProvider.cs" />
   </ItemGroup>
@@ -82,5 +84,6 @@
       <Name>EugeneDunin.SchoolSchedule.DataModule</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

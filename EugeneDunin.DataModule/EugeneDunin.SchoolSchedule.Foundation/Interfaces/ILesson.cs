@@ -3,6 +3,6 @@
     public interface ILesson: IEntity
     {
         IClass Class { get; set; }
-        int LessonNumber { get; set; }
+        int LessonNumber { get; }
     }
 }

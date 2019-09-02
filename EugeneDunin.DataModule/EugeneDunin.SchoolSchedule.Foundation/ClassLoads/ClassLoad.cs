@@ -8,7 +8,7 @@ using EugeneDunin.SchoolSchedule.Foundation.Interfaces.Internals;
 
 namespace EugeneDunin.SchoolSchedule.Foundation.ClassLoads
 {
-    public class ClassLoad: LogicEntityBase, IClassLoadInternal
+    public class ClassLoad: ContextInitBase, IClassLoadInternal
     {
         private readonly int StartStudyLoadToClass;
 

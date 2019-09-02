@@ -4,7 +4,7 @@ using EugeneDunin.SchoolSchedule.Foundation.Interfaces.Internals;
 
 namespace EugeneDunin.SchoolSchedule.Foundation.Classes
 {
-    public class Class : LogicEntityBase, IClassInternal
+    public class Class : ContextInitBase, IClassInternal
     {
         public long Id { get; }
         public int Number { get; set; }
