@@ -3,11 +3,10 @@ using EugeneDunin.SchoolSchedule.Foundation.Interfaces;
 using EugeneDunin.SchoolSchedule.Foundation.Interfaces.Internals;
 using System.Collections.Generic;
 using System.Linq;
-using EugeneDunin.SchoolSchedule.Foundation.Abstractions;
 
 namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
 {
-    public sealed class TeacherWorkload : ContextInitBase, ITeacherWorkloadInternal
+    public sealed class TeacherWorkload : ITeacherWorkloadInternal
     {
         public long Id { get; }
         public string Name { get; set; }
@@ -17,25 +16,24 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
         public ICollection<IClassLoad> ClassLoads { get; set; }
 
 
-        public TeacherWorkload(SchoolScheduleContext ctx, long id): base(ctx)
+        public TeacherWorkload(long id)
         {
             Id = id;
         }
 
-
-        public void Delete()
+        public void Update(SchoolScheduleContext ctx)
         {
             foreach (var classLoad in ClassLoads)
             {
-                classLoad.Delete();
+                classLoad.Delete(ctx);
             }
         }
 
-        public void Update()
+        public void Delete(SchoolScheduleContext ctx)
         {
             foreach (var classLoad in ClassLoads)
             {
-                classLoad.Update();
+                classLoad.Update(ctx);
             }
         }
     }

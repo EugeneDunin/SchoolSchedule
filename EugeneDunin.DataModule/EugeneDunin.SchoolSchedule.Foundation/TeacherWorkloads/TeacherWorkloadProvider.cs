@@ -76,7 +76,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
             return (from ts in _ctx.TeacherSubjects
                 where ts.FkTeacherId == teacher.TeacherId
                 join subj in _ctx.Subjects on ts.FkSubjectId equals subj.SubjectId
-                select new TeacherWorkload(_ctx, teacherId)
+                select new TeacherWorkload(teacherId)
                 {
                     Name = teacher.Name,
                     Surname = teacher.Surname,
@@ -96,7 +96,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
                 join ts in _ctx.TeacherSubjects on t.TeacherId equals ts.FkTeacherId
                 join subj in _ctx.Subjects on ts.FkSubjectId equals subj.SubjectId
                 where subjectFilter(subj)
-                select new TeacherWorkload(_ctx, t.TeacherId)
+                select new TeacherWorkload(t.TeacherId)
                 {
                     Name = t.Name,
                     Surname = t.Surname,
@@ -116,7 +116,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
             return new ClassLoad(_ctx, teacherWorkloadSchedule.TeacherWorkloadScheduleId)
             {
                 StudyLoadToClass = teacherWorkloadSchedule.StudyLoad,
-                Class = _classFactory.CreateClass(_ctx, cl)
+                Class = _classFactory.CreateClass(cl)
             };
         }
     }
