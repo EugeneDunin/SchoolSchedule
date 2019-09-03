@@ -51,11 +51,13 @@
     <Compile Include="Classes\Class.cs" />
     <Compile Include="Classes\ClassFactory.cs" />
     <Compile Include="ClassLoads\ClassLoad.cs" />
+    <Compile Include="ClassLoads\ClassLoadFactory.cs" />
+    <Compile Include="FactoryInitializers\ClassLoadFactoryInitializer.cs" />
     <Compile Include="FactoryInitializers\TeacherFactoryInitializer.cs" />
     <Compile Include="FactoryInitializers\LessonFactoryInitializer.cs" />
     <Compile Include="Interfaces\Factories\IClassroomFactory.cs" />
     <Compile Include="Interfaces\Factories\ILessonFactory.cs" />
-    <Compile Include="Interfaces\Factories\ITeacherFactory.cs" />
+    <Compile Include="Interfaces\Factories\ITeacherInfoFactory.cs" />
     <Compile Include="Interfaces\IClass.cs" />
     <Compile Include="Interfaces\Factories\IClassFactory.cs" />
     <Compile Include="Interfaces\IClassLoad.cs" />

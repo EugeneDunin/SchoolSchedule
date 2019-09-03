@@ -11,7 +11,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherSchedules
 {
     public class TeacherScheduleProvider: ITeacherScheduleProvider
     {
-        private readonly ITeacherFactory<TeacherFactoryInitializer> _teacherFactory;
+        private readonly ITeacherInfoFactory<TeacherFactoryInitializer> _teacherInfoFactory;
         private readonly ILessonFactory<LessonFactoryInitializer> _lessonFactory;
         private readonly IClassFactory<Class> _classFactory;
         private readonly IClassroomFactory<Classroom> _classroomFactory;
@@ -20,10 +20,10 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherSchedules
 
         public TeacherScheduleProvider(
             SchoolScheduleContext ctx,
-            ITeacherFactory<TeacherFactoryInitializer> teacherFactory,
+            ITeacherInfoFactory<TeacherFactoryInitializer> teacherInfoFactory,
             ILessonFactory<LessonFactoryInitializer> lessonFactory, IClassFactory<Class> classFactory, IClassroomFactory<Classroom> classroomFactory)
         {
-            _teacherFactory = teacherFactory;
+            _teacherInfoFactory = teacherInfoFactory;
             _lessonFactory = lessonFactory;
             _classFactory = classFactory;
             _classroomFactory = classroomFactory;
@@ -44,7 +44,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherSchedules
                     join subj in _ctx.Subjects on ts.FkSubjectId equals subj.SubjectId
                 select new TeacherSchedule(teacherId)
                 {
-                    Teacher = _teacherFactory.CreateTeacher(new TeacherFactoryInitializer(teacher, subj)),
+                    Teacher = _teacherInfoFactory.CreateTeacher(new TeacherFactoryInitializer(teacher, subj)),
                     OwnClass = _classFactory.CreateClass(teacher.Class),
                     Lessons = (from twsRecord in _ctx.TeacherWorkloadSchedules
                                where twsRecord.FkTeacherSubjectId == ts.TeacherSubjectId
@@ -89,7 +89,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherSchedules
                 join subj in _ctx.Subjects on ts.FkSubjectId equals subj.SubjectId
                 select new TeacherSchedule(teacherId)
                 {
-                    TeacherInfo = _teacherFactory.CreateTeacher(new TeacherFactoryInitializer(teacher, subj)),
+                    TeacherInfo = _teacherInfoFactory.CreateTeacher(new TeacherFactoryInitializer(teacher, subj)),
                     OwnClass = _classFactory.CreateClass(teacher.Class),
                     Lessons = (from twsRecord in _ctx.TeacherWorkloadSchedules
                             where FilterCondition(twsRecord, ts)
@@ -109,7 +109,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherSchedules
                 where subjectFilter(subj)
                 select new TeacherSchedule(t.TeacherId)
                 {
-                    TeacherInfo = _teacherFactory.CreateTeacher(new TeacherFactoryInitializer(t, subj)),
+                    TeacherInfo = _teacherInfoFactory.CreateTeacher(new TeacherFactoryInitializer(t, subj)),
                     OwnClass = _classFactory.CreateClass(t.Class),
                     Lessons = (from twsRecord in _ctx.TeacherWorkloadSchedules
                             where twsRecord.FkTeacherSubjectId == ts.TeacherSubjectId && twsFilter(twsRecord)
