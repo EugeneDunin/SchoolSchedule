@@ -2,7 +2,7 @@
 
 namespace EugeneDunin.SchoolSchedule.Foundation.FactoryInitializers
 {
-    public class LessonFactoryInitializer
+    public struct LessonFactoryInitializer
     {
         public TeacherWorkloadSchedule TeacherWorkloadSchedule { get; }
         public Class Class { get; }
