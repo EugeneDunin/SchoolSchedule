@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using EugeneDunin.SchoolSchedule.DataModule.Contexts;
 using EugeneDunin.SchoolSchedule.DataModule.Entities;
-using EugeneDunin.SchoolSchedule.Foundation.ClassLoads;
+using EugeneDunin.SchoolSchedule.Foundation.FactoryInitializers;
 using EugeneDunin.SchoolSchedule.Foundation.Interfaces;
 using EugeneDunin.SchoolSchedule.Foundation.Interfaces.Factories;
 
@@ -12,14 +12,15 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
     public class TeacherWorkloadProvider : ITeacherWorkloadProvider
     {
         private readonly SchoolScheduleContext _ctx;
-        private readonly IClassFactory<Class> _classFactory;
+        private readonly IClassLoadFactory<ClassLoadFactoryInitializer> _classLoadFactory;
+
 
         public TeacherWorkloadProvider(
             SchoolScheduleContext ctx,
-            IClassFactory<Class> classFactory)
+            IClassLoadFactory<ClassLoadFactoryInitializer> classLoadFactory)
         {
             _ctx = ctx;
-            _classFactory = classFactory;
+            _classLoadFactory = classLoadFactory;
         }
 
 
@@ -85,7 +86,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
                     ClassLoads = (from tws in _ctx.TeacherWorkloadSchedules
                             where FilterCondition(tws, ts)
                             join cl in _ctx.Classes on tws.FkClassId equals cl.ClassId
-                            select CreateClassLoads(cl, tws))
+                            select _classLoadFactory.CreateClassLoad(new ClassLoadFactoryInitializer(tws, cl)))
                         .ToList()
                 }).ToList() as ICollection<ITeacherWorkload>;
         }
@@ -105,19 +106,9 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherWorkloads
                     ClassLoads = (from tws in _ctx.TeacherWorkloadSchedules
                             where tws.FkTeacherSubjectId == ts.TeacherSubjectId && twsFilter(tws)
                             join cl in _ctx.Classes on tws.FkClassId equals cl.ClassId
-                            select CreateClassLoads(cl, tws))
+                            select _classLoadFactory.CreateClassLoad(new ClassLoadFactoryInitializer(tws, cl)))
                         .ToList()
                 }).ToList() as ICollection<ITeacherWorkload>;
-        }
-
-        private IClassLoad CreateClassLoads(
-            Class cl, TeacherWorkloadSchedule teacherWorkloadSchedule)
-        {
-            return new ClassLoad(_ctx, teacherWorkloadSchedule.TeacherWorkloadScheduleId)
-            {
-                StudyLoadToClass = teacherWorkloadSchedule.StudyLoad,
-                Class = _classFactory.CreateClass(cl)
-            };
         }
     }
 }

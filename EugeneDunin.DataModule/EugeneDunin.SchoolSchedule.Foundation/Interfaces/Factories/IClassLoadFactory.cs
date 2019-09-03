@@ -1,7 +1,7 @@
 ﻿namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces.Factories
 {
-    public interface IClassLoadFactory
+    public interface IClassLoadFactory<in TInit>
     {
-        IClassLoad CreateClassLoad();
+        IClassLoad CreateClassLoad(TInit initializer);
     }
 }
