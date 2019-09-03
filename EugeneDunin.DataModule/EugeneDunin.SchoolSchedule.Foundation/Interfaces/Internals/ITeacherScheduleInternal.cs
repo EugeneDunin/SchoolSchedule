@@ -9,7 +9,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces.Internals
     public interface ITeacherScheduleInternal: ITeacherSchedule
     {
         new ICollection<ILesson> Lessons { get; set; }
-        new ITeacher Teacher { get; set; }
+        new ITeacherInfo TeacherInfo { get; set; }
         new IClass OwnClass { get; set; }
     }
 }
