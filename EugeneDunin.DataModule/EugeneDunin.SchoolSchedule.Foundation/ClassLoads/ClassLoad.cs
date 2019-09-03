@@ -1,6 +1,5 @@
 ﻿using System;
 using EugeneDunin.SchoolSchedule.DataModule.Contexts;
-using EugeneDunin.SchoolSchedule.Foundation.Abstractions;
 using EugeneDunin.SchoolSchedule.Foundation.Interfaces;
 using System.Data.Entity;
 using System.Linq;
@@ -8,7 +7,7 @@ using EugeneDunin.SchoolSchedule.Foundation.Interfaces.Internals;
 
 namespace EugeneDunin.SchoolSchedule.Foundation.ClassLoads
 {
-    public class ClassLoad: ContextInitBase, IClassLoadInternal
+    public class ClassLoad: IClassLoadInternal
     {
         private readonly int StartStudyLoadToClass;
 
@@ -17,22 +16,22 @@ namespace EugeneDunin.SchoolSchedule.Foundation.ClassLoads
         public long Id { get; }
 
 
-        public ClassLoad(SchoolScheduleContext ctx, long id) : base(ctx)
+        public ClassLoad(long id)
         {
             Id = id;
             StartStudyLoadToClass = StudyLoadToClass;
         }
 
 
-        public void Update()
+        public void Update(SchoolScheduleContext ctx)
         {
             if (StudyLoadToClass != StartStudyLoadToClass)
             {
-                var currStudyLoad = Ctx.TeacherWorkloadSchedules.Where(tws =>
-                    tws.FkTeacherSubjectId == Ctx.TeacherWorkloadSchedules.Find(Id).FkTeacherSubjectId
+                var currStudyLoad = ctx.TeacherWorkloadSchedules.Where(tws =>
+                    tws.FkTeacherSubjectId == ctx.TeacherWorkloadSchedules.Find(Id).FkTeacherSubjectId
                 ).Sum(tws => tws.StudyLoad);
 
-                var twsRecord = Ctx.TeacherWorkloadSchedules
+                var twsRecord = ctx.TeacherWorkloadSchedules
                     .Include(tws => tws.TeacherSubject.Teacher)
                     .First(tws => tws.TeacherWorkloadScheduleId == Id);
 
@@ -53,13 +52,13 @@ namespace EugeneDunin.SchoolSchedule.Foundation.ClassLoads
 
             if (StudyLoadToClass == 0)
             {
-                Ctx.TeacherWorkloadSchedules.Find(Id).StudyLoad = 0;
+                ctx.TeacherWorkloadSchedules.Find(Id).StudyLoad = 0;
             }
         }
 
-        public void Delete()
+        public void Delete(SchoolScheduleContext ctx)
         {
-            Ctx.TeacherWorkloadSchedules.Remove(Ctx.TeacherWorkloadSchedules.Find(Id));
+            ctx.TeacherWorkloadSchedules.Remove(ctx.TeacherWorkloadSchedules.Find(Id));
         }
     }
 }

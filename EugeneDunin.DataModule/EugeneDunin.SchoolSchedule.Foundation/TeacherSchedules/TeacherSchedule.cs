@@ -17,7 +17,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherSchedules
         public IClass OwnClass { get; set; }
 
 
-        public TeacherSchedule(SchoolScheduleContext ctx, long id) : base(ctx)
+        public TeacherSchedule(long id)
         {
             Id = id;
         }
