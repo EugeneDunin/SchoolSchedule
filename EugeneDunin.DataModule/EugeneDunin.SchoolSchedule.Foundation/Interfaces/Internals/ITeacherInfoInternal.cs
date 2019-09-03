@@ -1,6 +1,6 @@
 ﻿namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces.Internals
 {
-    internal interface ITeacherInternal: ITeacher
+    internal interface ITeacherInfoInternal: ITeacherInfo
     {
         new string Name { get; set; }
         new string Surname { get; set; }

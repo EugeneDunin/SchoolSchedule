@@ -13,7 +13,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherSchedules
     {
         public long Id { get; }
         public ICollection<ILesson> Lessons { get; set; }
-        public ITeacher Teacher { get; set; }
+        public ITeacherInfo TeacherInfo { get; set; }
         public IClass OwnClass { get; set; }
 
 

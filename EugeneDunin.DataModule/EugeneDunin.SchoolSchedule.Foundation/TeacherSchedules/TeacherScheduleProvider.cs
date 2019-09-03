@@ -89,7 +89,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherSchedules
                 join subj in _ctx.Subjects on ts.FkSubjectId equals subj.SubjectId
                 select new TeacherSchedule(teacherId)
                 {
-                    Teacher = _teacherFactory.CreateTeacher(new TeacherFactoryInitializer(teacher, subj)),
+                    TeacherInfo = _teacherFactory.CreateTeacher(new TeacherFactoryInitializer(teacher, subj)),
                     OwnClass = _classFactory.CreateClass(teacher.Class),
                     Lessons = (from twsRecord in _ctx.TeacherWorkloadSchedules
                             where FilterCondition(twsRecord, ts)
@@ -109,7 +109,7 @@ namespace EugeneDunin.SchoolSchedule.Foundation.TeacherSchedules
                 where subjectFilter(subj)
                 select new TeacherSchedule(t.TeacherId)
                 {
-                    Teacher = _teacherFactory.CreateTeacher(new TeacherFactoryInitializer(t, subj)),
+                    TeacherInfo = _teacherFactory.CreateTeacher(new TeacherFactoryInitializer(t, subj)),
                     OwnClass = _classFactory.CreateClass(t.Class),
                     Lessons = (from twsRecord in _ctx.TeacherWorkloadSchedules
                             where twsRecord.FkTeacherSubjectId == ts.TeacherSubjectId && twsFilter(twsRecord)

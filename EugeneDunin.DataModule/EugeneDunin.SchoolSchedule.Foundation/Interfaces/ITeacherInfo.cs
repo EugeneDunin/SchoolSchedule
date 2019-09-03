@@ -2,7 +2,7 @@
 
 namespace EugeneDunin.SchoolSchedule.Foundation.Interfaces
 {
-    public interface ITeacher: IEntity
+    public interface ITeacherInfo: IEntity
     {
         string Name { get; }
         string Surname { get; }
